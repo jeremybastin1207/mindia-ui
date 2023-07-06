@@ -1,17 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
 import { axiosClient } from './axios';
 
-export type NamedTransformation = {
-  name: string;
-  transformations: string;
+export type Media = {
+  path: string;
+  content_type: string;
+  content_length: number;
 };
 
-export const useListNamedTransformations = () => {
-  return useQuery({
-    queryKey: ['named_transformations'],
+export const useListMedias = () => {
+  return useQuery<Media[]>({
+    queryKey: ['medias'],
     queryFn: () =>
       axiosClient
-        .get('/v0/named_transformation', {
+        .get('/files/houses', {
           headers: { Authorization: 'Bearer masterKey' },
         })
         .then(({ data }) => data),
