@@ -8,6 +8,7 @@ import { bytes } from './utils/bytes';
 import NamedTransformations from './routes/named_transformations';
 import Settings from './routes/settings';
 import { Nav } from './modules/Nav';
+import Media from './routes/media';
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ export function App() {
           <div className="col-span-10 p-12">
             <Routes>
               <Route path="/" element={<Medias />} />
+              <Route path="/media/:path" element={<Media />} />
               <Route
                 path="/named_transformations"
                 element={<NamedTransformations />}

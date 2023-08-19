@@ -13,7 +13,13 @@ function Medias() {
       <div className="grid grid-cols-5 gap-4">
         {isLoading && <p>Loading...</p>}
         {medias?.map((media: Media, i) => (
-          <div className="max-w-sm bg-white border border-gray-200 rounded-lg  dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
+          <a
+            href={`/media/${media.path
+              .substring(1)
+              .replace(/(\.\w+)+$/, '')
+              .replace(/\//g, '%2F')}`}
+            className="max-w-sm bg-white border border-gray-200 rounded-lg  dark:bg-gray-800 dark:border-gray-700 overflow-hidden"
+          >
             <img
               key={i}
               alt=""
@@ -33,7 +39,7 @@ function Medias() {
               </p>
               <p className="text-sm">{media.content_type}</p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </>
