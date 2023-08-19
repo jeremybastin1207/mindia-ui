@@ -12,7 +12,7 @@ export const useListMedias = () => {
     queryKey: ['medias'],
     queryFn: () =>
       axiosClient
-        .get('/files/houses', {
+        .get('/files/houses?offset=0&limit=20&sort_by=created_at:desc', {
           headers: { Authorization: 'Bearer masterKey' },
         })
         .then(({ data }) => data),
